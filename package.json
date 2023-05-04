@@ -1,0 +1,22 @@
+{
+  "name": "shopping-list",
+  "version": "0.0.1",
+  "description": "Navigate the store to accomplish shopping as efficiently as possible",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josephdaw/shopping-list.git"
+  },
+  "keywords": [
+    "shopping"
+  ],
+  "author": "Joseph Daw",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/josephdaw/shopping-list/issues"
+  },
+  "homepage": "https://github.com/josephdaw/shopping-list#readme"
+}
