@@ -1,8 +1,6 @@
 import React from 'react'
 
 export default function ShoppingItem({ id, name, bought, toggleItem, deleteItem }) {
-    bought == true
-    console.log(bought)
     return (
         <li>
             <label>
