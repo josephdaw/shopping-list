@@ -5,12 +5,13 @@ import NewItemForm from './NewItemForm'
 
 export default function App() {
   const [shoppingItems, setShoppingItems] = useState([])
+  console.log(shoppingItems)
 
-  function addShoppingItem(name){
+  function addShoppingItem(item){
     setShoppingItems(currentItems => {
       return [
         ...currentItems,
-        { id: crypto.randomUUID(), name, bought: false}
+        { id: crypto.randomUUID(), ...item, bought: false}
       ]
     })
   }

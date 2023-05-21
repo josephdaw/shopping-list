@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Define the Items table
+model Item {
+  id          String  @id @default(uuid())
+  name        String
+  description String?
+  unit        String?
+
+  // Define the relationship with the Locations table
+  locations Location[]
+}
+
+// Define the Stores table
+model Store {
+  id      String @id @default(uuid())
+  name    String
+  address String
+
+  // Define the relationship with the Locations table
+  locations Location[]
+}
+
+// Define the Locations table
+model Location {
+  id       String @id @default(uuid())
+  itemId   String
+  storeId  String
+  location String
+
+  // Define the relationship with the Items table
+  item  Item  @relation(fields: [itemId], references: [id])
+  // Define the relationship with the Stores table
+  store Store @relation(fields: [storeId], references: [id])
+
+  // Define the unique constraint for each item-store combination
+  @@unique([itemId, storeId])
+}

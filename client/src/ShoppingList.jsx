@@ -2,6 +2,7 @@ import React from 'react'
 import ShoppingItem from './ShoppingItem'
 
 export default function ShoppingList({shoppingItems, toggleItem, deleteItem}) {
+    console.log(shoppingItems)
 
     return (
         <ul>
