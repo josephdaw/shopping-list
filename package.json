@@ -1,6 +1,6 @@
 {
   "name": "shopping-list",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Navigate the store to accomplish shopping as efficiently as possible",
   "main": "server.js",
   "scripts": {
