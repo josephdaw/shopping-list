@@ -1,0 +1,23 @@
+[
+  {
+    "firstName": "Joseph",
+    "lastName": "Daw",
+    "email": "joe@test.com",
+    "password": "pass1234",
+    "subscription": "PREMIUM"
+  },
+  {
+    "firstName": "Matthew",
+    "lastName": "Wills",
+    "email": "matt@test.com",
+    "password": "pass4321",
+    "subscription": "PREMIUM"
+  },
+  {
+    "firstName": "Jason",
+    "lastName": "Meredith",
+    "email": "jason@test.com",
+    "password": "password123",
+    "subscription": "FREE"
+  }
+]
