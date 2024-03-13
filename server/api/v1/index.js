@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const usersRoutes = require('./users-routes');
-const storesRoutes = require('./stores-routes');
-const itemsRoutes = require('./items-routes');
+const usersRoutes = require('./routes/users-routes');
+const storesRoutes = require('./routes/stores-routes');
+const itemsRoutes = require('./routes/items-routes');
 
 // placeholder for base of the API
 router.get('/', (req, res)=>{

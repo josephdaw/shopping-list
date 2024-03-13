@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Store } = require('../../models');
+const { Store } = require('../../../models');
 
 // The `/stores` endpoint
 
