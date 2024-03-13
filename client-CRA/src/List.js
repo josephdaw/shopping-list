@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './App.css';
+import './List.css';
+import { Link } from 'react-router-dom';
 
-function App() {
+function List() {
   const [items, setItems] = useState([]);
   const [filter, setFilter] = useState('');
 
@@ -25,18 +26,18 @@ function App() {
         <thead>
           <tr>
             <th>Item Name</th>
-            <th>Store Name</th>
-            <th>Location Details</th>
+            {/* <th>Store Name</th> */}
+            <th>Location</th>
           </tr>
         </thead>
         <tbody>
           {items.map(item => (
             <tr key={item._id}>
-              <td>{item.name}</td>
+              <td><Link to={`/items/${item._id}`}>{item.name}</Link></td>
               {item.location.filter(location => location.storeId.name === filter).map(location => (
                 <>
-                  <td>{location.storeId.name}</td>
-                  <td>{location.storeId.location}</td>
+                  {/* <td>{location.storeId.name}</td> */}
+                  {/* <td>{location.storeId.location}</td> */}
                   <td>{location.locationDetails}</td>
                 </>
               ))}
@@ -48,4 +49,4 @@ function App() {
   );
 }
 
-export default App;
+export default List;
