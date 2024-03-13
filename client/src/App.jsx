@@ -3,6 +3,8 @@ import './App.css'
 import './Nav'
 import List from './List';
 import Nav from "./Nav";
+import Item from "./Item";
+import Items from "./Items";
 
 function Home() {
   return (<h2>Home</h2>);
@@ -17,6 +19,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/list" element={<List />} />
+          <Route path="/items" element={<Items />} />
+          <Route path="/items/:id" element={<Item />} />
         </Routes>
     </Router>
   )

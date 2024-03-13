@@ -31,7 +31,7 @@ runSeed = async () => {
   for (const item of itemData) {
     const newItem = new Item(item);
     const store = (await Store.aggregate([{ $sample: { size: 1 } }]))[0];
-    newItem.location = [{
+    newItem.locations = [{
       storeId: store._id,
       locationDetails: item.locationDetails
     }];

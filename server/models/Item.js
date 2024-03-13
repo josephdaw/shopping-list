@@ -11,7 +11,7 @@ const itemSchema = new Schema(
             type: Number,
             required: true,
         },
-        location: [{
+        locations: [{
             storeId: {
               type: Schema.Types.ObjectId,
               ref: 'Store'

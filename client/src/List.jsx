@@ -6,16 +6,19 @@ import { Link } from 'react-router-dom';
 function List() {
   const [items, setItems] = useState([]);
   const [filter, setFilter] = useState('');
-
+  console.log('Component rendered');
+  
   useEffect(() => {
     axios.get('/api/v1/items')
       .then(res => setItems(res.data));
   }, []);
+
   console.log(items);
-  const storeNames = [...new Set(items?.flatMap(item => item.location.map(location => location.storeId.name)))];
+  const storeNames = [...new Set(items?.flatMap(item => item.locations.map(location => location.storeId.name)))];
   
   return (
     <div className="App">
+      <h1>Shopping List</h1>
       <select value={filter} onChange={e => setFilter(e.target.value)}>
         <option value="">Select a store</option>
         {storeNames.map(name => (
@@ -34,11 +37,11 @@ function List() {
           {items.map(item => (
             <tr key={item._id}>
               <td><Link to={`/items/${item._id}`}>{item.name}</Link></td>
-              {item.location.filter(location => location.storeId.name === filter).map(location => (
+              {item.locations.filter(location => location.storeId.name === filter).map(location => (
                 <>
                   {/* <td>{location.storeId.name}</td> */}
                   {/* <td>{location.storeId.location}</td> */}
-                  <td>{location.locationDetails}</td>
+                  <td key={location._id}>{location.locationDetails}</td>
                 </>
               ))}
             </tr>
