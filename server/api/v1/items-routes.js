@@ -41,4 +41,15 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.put('/:id', async (req, res) => {
+  console.log(req.body);
+  try {
+    const updatedItem = await Item.findByIdAndUpdate(req.params.id, req.body, { new: true }).populate('locations.storeId');
+    res.status(200).json(updatedItem);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+
 module.exports = router;
