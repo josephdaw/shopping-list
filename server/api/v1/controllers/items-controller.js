@@ -41,8 +41,19 @@ const updateItem = async (req, res) => {
   }
 };
 
+const deleteItem = async (req, res) => {
+  try {
+    const deleted = await Item.findByIdAndDelete(req.params.id);
+    res.status(200).json(deleted);
+  }
+  catch (err) {
+    res.status(400).json(err);
+  }
+}
+
 module.exports = {
   getAllItems,
   getOneItem,
   updateItem,
+  deleteItem,
 };

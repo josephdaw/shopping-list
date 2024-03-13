@@ -3,6 +3,7 @@ const {
   getAllItems,
   getOneItem,
   updateItem,
+  deleteItem,
 } = require('../controllers/items-controller');
 
 // The `/items` endpoint
@@ -18,6 +19,10 @@ router.get('/:id', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   updateItem(req, res);
+});
+
+router.delete('/:id', async (req, res) => {
+  deleteItem(req, res);
 });
 
 

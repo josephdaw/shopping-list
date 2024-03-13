@@ -10,9 +10,6 @@ function Item() {
   const [store, setStore] = useState("");
   const [stores, setStores] = useState([]);
 
-  console.log(item);
-  console.log(store);
-
   useEffect(() => {
     axios.get(`/api/v1/items/${id}`)
       .then(res => setItems(res.data))
@@ -65,6 +62,23 @@ function Item() {
       });
   };
 
+  const handleDeleteLocation = (locationId) => {
+    // Filter out the location with the given locationId
+    const updatedLocations = item.locations.filter(location => location._id !== locationId);
+
+    // Create a new item object with the updated locations
+    const updatedItem = { ...item, locations: updatedLocations };
+
+    axios.put(`/api/v1/items/${id}`, updatedItem)
+      .then(res => {
+        // Update the state with the updated item
+        setItems(res.data);
+      })
+      .catch(error => {
+        console.error('Error deleting location:', error);
+      });
+  };
+
   return (
     <div>
       <h2>{item?.name}</h2>
@@ -91,6 +105,9 @@ function Item() {
             <tr key={location._id}>
               <td>{location.storeId.name}</td>
               <td>{location.locationDetails}</td>
+              <td>
+                <button onClick={() => handleDeleteLocation(location._id)}>Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>
