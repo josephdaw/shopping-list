@@ -1,0 +1,9 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+nav a {
+  margin: 0 10px;
+}
