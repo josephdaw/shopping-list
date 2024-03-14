@@ -1,18 +1,15 @@
 [
   {
     "name": "Vegemite",
-    "quantity": "1",
     "locationDetails": "Aisle 5"
   },
   {
     "name": "Salt",
-    "quantity": "1",
     "locationDetails": "Aisle 4"
 
   },
   {
     "name": "Tissues",
-    "quantity": "2",
     "locationDetails": "Aisle 10"
   }
 ]

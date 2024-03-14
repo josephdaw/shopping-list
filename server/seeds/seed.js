@@ -8,6 +8,7 @@ const Store = require('../models/Store');
 const userData = require('./userData.json');
 const storeData = require('./storeData.json');
 const itemData = require('./itemData.json');
+const shoppingListData = require('./shoppingListData.json');
 
 
 runSeed = async () => {
@@ -21,10 +22,6 @@ runSeed = async () => {
   await Item.deleteMany({});
 
   // bulk create each model
-  const users = userData.map(user => new User(user));
-  for (const user of users) {
-    await user.save();
-  }
 
   const stores = await Store.insertMany(storeData)
 
@@ -37,6 +34,24 @@ runSeed = async () => {
     }];
     await newItem.save();
   }
+
+  const users = userData.map(user => new User(user));
+  for (const user of users) {
+    if (user.firstName === 'Joseph') {
+      for (const item of shoppingListData) {
+        const foundItem = await Item.findOne({ name: item.name });
+        if (foundItem) {
+          user.shoppingList.push({
+            itemId: foundItem._id,
+            quantity: item.quantity
+          });
+        }
+      }
+      await user.save();
+    }
+  }
+
+  
 
   
 

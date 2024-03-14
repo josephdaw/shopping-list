@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 
 function List() {
   const [items, setItems] = useState([]);
-  
+  const [shoppingList, setShoppingList] = useState([]);
+
   useEffect(() => {
     axios.get('/api/v1/items')
       .then(res => setItems(res.data));
@@ -24,6 +25,14 @@ function List() {
       });
   };
 
+  const handleToggleShopping = (itemId) => {
+    if (shoppingList.includes(itemId)) {
+      setShoppingList(shoppingList.filter(id => id !== itemId));
+    } else {
+      setShoppingList([...shoppingList, itemId]);
+    }
+  };
+
   return (
     <div className="App">
       <h1>All Items</h1>
@@ -35,12 +44,18 @@ function List() {
         <thead>
           <tr>
             <th>Item Name</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {items.map(item => (
             <tr key={item._id}>
               <td><Link to={`/items/${item._id}`}>{item.name}</Link></td>
+              <td>
+                <button onClick={() => handleToggleShopping(item._id)}>
+                  {shoppingList.includes(item._id) ? 'Remove from Shopping' : 'Add to Shopping'}
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
