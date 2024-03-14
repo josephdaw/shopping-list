@@ -24,7 +24,19 @@ const userSchema = new Schema(
         },
         subscription: {
             type: String,
-        }
+        },
+        shoppingList: [
+            {
+                item: {
+                    type: Schema.Types.ObjectId,
+                    ref: 'Item',
+                },
+                quantity: {
+                    type: Number,
+                    default: 1,
+                },
+            }
+        ],
     },
     {
         id: false,

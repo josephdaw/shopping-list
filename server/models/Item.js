@@ -7,10 +7,6 @@ const itemSchema = new Schema(
             trim: true,
             required: true,
         },
-        quantity: {
-            type: Number,
-            required: true,
-        },
         locations: [{
             storeId: {
               type: Schema.Types.ObjectId,

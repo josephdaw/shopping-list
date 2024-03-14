@@ -11,11 +11,26 @@ function List() {
       .then(res => setItems(res.data));
   }, []);
 
-  
+  const [itemName, setItemName] = useState('');
+
+  const handleAddItem = () => {
+    axios.post('/api/v1/items', { name: itemName })
+      .then(res => {
+        setItems([...items, res.data]);
+        setItemName('');
+      })
+      .catch(error => {
+        console.error('Error adding item:', error);
+      });
+  };
+
   return (
     <div className="App">
       <h1>All Items</h1>
-
+      <div>
+        <input type="text" placeholder="Enter item name" value={itemName} onChange={e => setItemName(e.target.value)} />
+        <button onClick={handleAddItem}>Add Item</button>
+      </div>
       <table>
         <thead>
           <tr>

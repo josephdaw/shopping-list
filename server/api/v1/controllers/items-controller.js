@@ -31,6 +31,17 @@ const getOneItem = async (req, res) => {
   }
 };
 
+// add an item
+const addItem = async (req, res) => {
+  try {
+    const newItem = new Item(req.body);
+    const savedItem = await newItem.save();
+    res.status(201).json(savedItem);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+};
+
 // update an item
 const updateItem = async (req, res) => {
   try {
@@ -54,6 +65,7 @@ const deleteItem = async (req, res) => {
 module.exports = {
   getAllItems,
   getOneItem,
+  addItem,
   updateItem,
   deleteItem,
 };
